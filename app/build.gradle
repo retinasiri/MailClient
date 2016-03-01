@@ -17,6 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions
+    {
+        pickFirst 'META-INF/license.txt'
+        pickFirst 'META-INF/NOTICE.txt'
+        pickFirst 'META-INF/mailcap'
+        pickFirst 'META-INF/javamail.providers'
+    }
 }
 
 dependencies {
@@ -24,4 +31,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.2.0'
+    compile files ('libs/dsn.jar')
+    compile files ('libs/imap.jar')
+    compile files ('libs/mailapi.jar')
+    compile files ('libs/pop3.jar')
+    compile files ('libs/smtp.jar')
+
 }
