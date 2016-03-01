@@ -24,6 +24,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jeefer.mailclient.LoginActivity" />
         </activity>
+        <activity
+            android:name=".SendMailActivity"
+            android:label="@string/title_activity_send_mail"
+            android:parentActivityName=".InboxActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jeefer.mailclient.InboxActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -16,7 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login() {
-        Intent intent = new Intent(this, Inbox.class);
+        Intent intent = new Intent(this, InboxActivity.class);
         EditText emailEditText = (EditText) findViewById(R.id.emailInput);
         EditText passwordEditText = (EditText) findViewById(R.id.passwordInput);
 
