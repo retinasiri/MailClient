@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_EMAIL, email);
         intent.putExtra(EXTRA_PASSWORD, password);
 
+        //vérifier l'email et le mot de passe
         startActivity(intent);
 
 

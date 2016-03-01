@@ -3,4 +3,5 @@
     <string name="email_text">Email</string>
     <string name="password_text">Password</string>
     <string name="login_button_text">Login</string>
+    <string name="title_activity_inbox">Inbox</string>
 </resources>
