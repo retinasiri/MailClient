@@ -29,12 +29,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/subjectInput"
+        android:hint="@string/subject_input_text"
         android:layout_below="@+id/recepientInput"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="@string/subject_input_text" />
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/recepientInput"
+        android:layout_alignEnd="@+id/recepientInput" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,10 +43,11 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/messageInput"
+        android:hint="@string/message_input_text"
         android:layout_below="@+id/subjectInput"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
         android:layout_alignRight="@+id/subjectInput"
-        android:layout_alignEnd="@+id/subjectInput"
-        android:hint="@string/message_input_text" />
+        android:layout_alignEnd="@+id/subjectInput" />
 </RelativeLayout>
