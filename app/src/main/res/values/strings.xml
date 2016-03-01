@@ -4,7 +4,7 @@
     <string name="password_text">Password</string>
     <string name="login_button_text">Login</string>
     <string name="title_activity_inbox">Inbox</string>
-    <string name="title_activity_send_mail">SendMailActivity</string>
+    <string name="title_activity_send_mail">Send Mail</string>
     <string name="recepient_input_text">To</string>
     <string name="subject_input_text">Subject</string>
     <string name="message_input_text">Compose the message</string>
