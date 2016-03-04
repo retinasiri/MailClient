@@ -16,7 +16,7 @@ import javax.mail.internet.MimeMessage;
 public class SendMail {
 
     //initialisation des variables
-    String emailPort = "587"; // gmail's smtp port
+    String emailPort = "465"; // gmail's smtp port
     String smtpAuth = "true";
     String starttls = "true";
     String emailHost = "smtp.gmail.com";
@@ -50,6 +50,7 @@ public class SendMail {
         emailProperties.put("mail.smtp.port", emailPort);
         emailProperties.put("mail.smtp.auth", smtpAuth);
         emailProperties.put("mail.smtp.starttls.enable", starttls);
+        mailSession = Session.getInstance(emailProperties);
         Log.i("GMail", "Mail server properties set.");
 
     }
@@ -58,23 +59,34 @@ public class SendMail {
 
         // 2 -> Creation du message
 
-        mailSession = Session.getDefaultInstance(emailProperties, null);
-
+        //mailSession = Session.getDefaultInstance(emailProperties, null);
         emailMessage = new MimeMessage(mailSession);
+        emailMessage.setFrom(new InternetAddress(fromEmail, fromEmail));
+        Log.i("GMail", "toEmail: " + toEmail);
+        emailMessage.setSubject(emailSubject);
+        emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+        Log.i("GMail", "Recipient set");
+        Log.i("GMail", emailMessage.toString());
+        Log.i("GMail", "emailBody : " + emailBody);
+        //emailMessage.setContent(emailBody, "text/html");// for a html email
+        emailMessage.setText(emailBody);// for a text email
+        Log.i("GMail", "Email Message created.");
 
-        try {
+//        try {
+////
+//
+//        }catch (MessagingException e){
+//            e.printStackTrace();
+//        }
 
-            emailMessage.setFrom(new InternetAddress(fromEmail, fromEmail));
-            Log.i("GMail","toEmail: "+toEmail);
-            emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
-            emailMessage.setSubject(emailSubject);
-            //emailMessage.setContent(emailBody, "text/html");// for a html email
-            emailMessage.setText(emailBody);// for a text email
-            Log.i("GMail", "Email Message created.");
 
-        }catch (MessagingException e){
-            e.printStackTrace();
-        }
+        Transport transport = mailSession.getTransport("smtp");
+        Log.i("GMail", "transport create");
+        transport.connect(emailHost, fromEmail, fromPassword);
+        Log.i("GMail", "allrecipients: " + emailMessage.getAllRecipients());
+        transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+        transport.close();
+        Log.i("GMail", "Email sent successfully.");
 
 
         return emailMessage;
@@ -87,11 +99,14 @@ public class SendMail {
         // 3 -> Envoi du message
 
         Transport transport = mailSession.getTransport("smtp");
+        transport.connect(emailHost, fromEmail, fromPassword);
+        Log.i("GMail", "allrecipients: " + emailMessage.getAllRecipients());
+        transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+        transport.close();
+        Log.i("GMail", "Email sent successfully.");
 
-        try{
-            transport.connect(emailHost, fromEmail, fromPassword);
-            Log.i("GMail", "allrecipients: " + emailMessage.getAllRecipients());
-            transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+        /*try{
+
 
         }catch (MessagingException e){
             e.printStackTrace();
@@ -99,13 +114,12 @@ public class SendMail {
         }finally {
             try {
                 if (transport != null) {
-                    transport.close();
-                    Log.i("GMail", "Email sent successfully.");
+
                 }
             } catch (MessagingException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 
 
     }

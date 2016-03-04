@@ -19,22 +19,25 @@ android {
     }
     packagingOptions
     {
-        pickFirst 'META-INF/license.txt'
-        pickFirst 'META-INF/NOTICE.txt'
+        pickFirst 'META-INF/LICENSE.txt'
         pickFirst 'META-INF/mailcap'
         pickFirst 'META-INF/javamail.providers'
+
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:design:23.2.0'
-    compile files ('libs/dsn.jar')
-    compile files ('libs/imap.jar')
-    compile files ('libs/mailapi.jar')
-    compile files ('libs/pop3.jar')
-    compile files ('libs/smtp.jar')
-
+    compile files('libs/dsn.jar')
+    compile files('libs/imap.jar')
+    compile files('libs/mailapi.jar')
+    compile files('libs/pop3.jar')
+    compile files('libs/smtp.jar')
+    compile files('libs/gimap.jar')
+    compile files('libs/activation.jar')
+    compile files('libs/additionnal.jar')
+    compile files('libs/mail.jar')
 }

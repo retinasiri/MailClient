@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -46,8 +47,9 @@ public class SendMailActivity extends AppCompatActivity {
                 //Send Mail
 
                 SendMail mail = new SendMail(senderEmail, senderPassword, recepient, subject, message);
-
-                Toast.makeText(SendMailActivity.this, "Preparing mail message", Toast.LENGTH_SHORT).show();
+                Log.i("GMail", "Sender : " + senderEmail);
+                Log.i("GMail", "Sender Password: " + senderPassword);
+                //Toast.makeText(SendMailActivity.this, "Preparing mail message", Toast.LENGTH_SHORT).show();
 
                 try {
                     mail.createEmailMessage();
@@ -56,14 +58,15 @@ public class SendMailActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(SendMailActivity.this, "Sending email", Toast.LENGTH_SHORT).show();
-                try {
-                    mail.sendMessage();
-                } catch (MessagingException e){
-                    e.printStackTrace();
-                }
+                //Toast.makeText(SendMailActivity.this, "Sending email", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(SendMailActivity.this, "Email Sent", Toast.LENGTH_SHORT).show();
+//                try {
+//                    mail.sendMessage();
+//                } catch (MessagingException e){
+//                    e.printStackTrace();
+//                }
+
+                //Toast.makeText(SendMailActivity.this, "Email Sent", Toast.LENGTH_SHORT).show();
 
             }
         });
